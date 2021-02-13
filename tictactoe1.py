@@ -76,7 +76,7 @@ class tictactoe:
         return move_row, move_column
 
 
-    
+
     def play(self):
         self.show_instructions()
         while True:
@@ -89,23 +89,27 @@ class tictactoe:
                 self.game_state = self.STATES.NAUGHT_TURN
                 self.is_game_over()
             elif self.STATES.NAUGHT_TURN == self.game_state:
+                #get ai move
                 move_row, move_column = self.get_ai_move()
                 self.game_state = self.STATES.CROSS_TURN
                 self.place_marker('o', move_row, move_column)
                 print('AI played: ',move_row, move_column)
                 self.is_game_over()
+                #end game if DRAW
             elif self.STATES.DRAW == self.game_state:
                 print("Game has ended in a draw")
                 break
+                #end game if AI wins
             elif self.STATES.NAUGHT_WON == self.game_state:
                 print("AI has won the game")
                 break
+                #end game if user wins
             elif self.STATES.CROSS_WON == self.game_state:
                 print("Human user won the game")
                 break
 
 
-
+#main function
 if __name__ == "__main__":
     game = tictactoe()
     game.play()
